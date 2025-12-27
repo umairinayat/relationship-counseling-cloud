@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ../
+      dockerfile: deploy/Dockerfile
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+    ports:
+      - "8000:8000"
+    networks:
+      - ai-net
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: relationship_ai
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ../src/database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    networks:
+      - ai-net
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U user -d relationship_ai" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:alpine
+    networks:
+      - ai-net
+
+networks:
+  ai-net:
+
+
+volumes:
+  pgdata:

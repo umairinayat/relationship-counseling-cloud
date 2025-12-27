@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relationship Support AI</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Outfit', sans-serif; }
+        .markdown-body ul { list-style-type: disc; margin-left: 1.5rem; }
+        .markdown-body p { margin-bottom: 0.75rem; }
+    </style>
+</head>
+<body class="bg-slate-50 h-screen flex flex-col items-center">
+
+    <!-- Header -->
+    <header class="w-full bg-white shadow-sm py-4 px-6 flex justify-between items-center z-10">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-teal-600 rounded-full flex items-center justify-center text-white font-bold">AI</div>
+            <h1 class="text-xl font-semibold text-slate-800">Support Companion</h1>
+        </div>
+        <button id="reset-btn" class="text-sm text-slate-500 hover:text-red-500 transition">Reset Session</button>
+    </header>
+
+    <!-- Chat Container -->
+    <main class="flex-1 w-full max-w-2xl bg-white shadow-lg my-4 rounded-xl overflow-hidden flex flex-col relative">
+        
+        <!-- Messages Area -->
+        <div id="messages" class="flex-1 overflow-y-auto p-6 space-y-6 bg-slate-50/50 scroll-smooth">
+            
+            <!-- Intro Message -->
+            <div class="flex gap-4">
+                <div class="w-8 h-8 bg-teal-600 rounded-full flex-shrink-0 flex items-center justify-center text-white text-xs">AI</div>
+                <div class="bg-white border border-slate-100 p-4 rounded-2xl rounded-tl-none shadow-sm text-slate-700 max-w-[85%]">
+                    <p>Hello. I'm here to listen and help you reflect on your relationship. I'm an AI, not a therapist, so please keep that in mind.</p>
+                    <p class="mt-2 text-sm text-slate-500">Everything you say is private, but I cannot assist in crisis situations.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Input Area -->
+        <div class="p-4 bg-white border-t border-slate-100">
+            <form id="chat-form" class="relative">
+                <input 
+                    type="text" 
+                    id="user-input" 
+                    class="w-full pl-5 pr-12 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 transition text-slate-700 placeholder-slate-400"
+                    placeholder="Type your thoughts here..."
+                    autocomplete="off"
+                >
+                <button 
+                    type="submit" 
+                    id="send-btn"
+                    class="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+                    </svg>
+                </button>
+            </form>
+            <div class="text-center mt-2">
+                <p class="text-[10px] text-slate-400">Not medical advice. If you are in danger, please call emergency services.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

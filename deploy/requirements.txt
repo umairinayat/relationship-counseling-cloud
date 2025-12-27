@@ -1,0 +1,12 @@
+openai
+asyncpg
+pydantic
+pydantic-settings
+tiktoken
+redis
+tenacity
+python-dotenv
+flask
+markdown
+uvicorn[standard]
+asgiref
